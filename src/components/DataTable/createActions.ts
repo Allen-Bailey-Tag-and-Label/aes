@@ -26,7 +26,6 @@ export const createActions = (modelName: string) => {
 		save: async ({ request }) => {
 			const formData = await request.formData();
 			const rows = formData.get('rows');
-			console.log(rows);
 			if (rows === null) return fail(400, { error: 'Missing Rows' });
 			await Promise.all(
 				JSON.parse(rows).map(async (row) => {

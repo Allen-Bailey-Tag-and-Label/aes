@@ -9,9 +9,7 @@ const createLoad = async (
 	const load = async () => {
 		const { columnMerges, schemaFilterKeys } = options;
 		const relationFields = Object.keys(schema).filter(
-			(field) =>
-				schema[field]?.relationFromFields !== undefined &&
-				schema[field]?.relationFromFields?.length !== 0
+			(field) => schema[field]?.relationName !== undefined
 		);
 		const columns: Column[] = await Promise.all(
 			Object.keys(schema)

@@ -15,7 +15,8 @@
 				[
 					{ href: '/item-master/configured-item-operations', label: 'Configured Item - Operations' }
 				],
-				[{ href: '/work-center-setup', label: 'Work Center Setup' }]
+				[{ href: '/item-master/product-setup', label: 'Product Setup' }],
+				[{ href: '/item-master/work-center-setup', label: 'Work Center Setup' }]
 			]
 		},
 		{
@@ -48,7 +49,7 @@
 				</Button>
 				<div
 					class={twMerge(
-						'absolute bottom-0 left-0 flex translate-y-full flex-col divide-y divide-neutral-300 bg-white text-black',
+						'absolute bottom-0 left-0 z-[1] flex translate-y-full flex-col divide-y divide-neutral-300 bg-white text-black ring-1 ring-neutral-400',
 						navItem.isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
 					)}
 				>
