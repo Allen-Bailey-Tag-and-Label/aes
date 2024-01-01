@@ -1,1 +1,1 @@
-export * from 'sveltewind/components/icons';
+export * from '@steeze-ui/feather-icons';

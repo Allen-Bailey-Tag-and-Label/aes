@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Branch {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  branch      Int
+  description String
+  address1    String
+  address2    String       @default("")
+  city        String
+  state       String
+  zipCode     Int
+  country     String
+  phone       String
+  fax         String
+  contact     String
+  email       String
+  active      Boolean
+  operations  Operation[]
+  workCenters WorkCenter[]
+}
+
+model Operation {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  branchId  String  @db.ObjectId
+  branch    Branch  @relation(fields: [branchId], references: [id])
+  productId String  @db.ObjectId
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model Product {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  code      String
+  display   String
+  operation Operation[]
+}
+
+model WorkCenter {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  workCenter    Int
+  description   String
+  setupLabor    Float
+  runLabor      Float
+  variableOH    Float
+  fixedOH       Float
+  machSetupRate Float
+  machRunRate   Float
+  dateCreated   DateTime @default(now())
+  dateModified  DateTime
+  branchId      String   @db.ObjectId
+  branch        Branch   @relation(fields: [branchId], references: [id])
+}
